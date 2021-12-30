@@ -7,7 +7,6 @@ interface Props {
 const KvRules: React.FC<Props> = (props) => {
   return (
     <div className="text-left font-bold p-4 text-blue-900 bg-white rounded-3xl border-NeonCarrot border-4">
-      {/* <img src="/gifts.png" className="d-block mr-auto ml-auto max-w-full" /> */}
       <p>Cách mở tàng thư học viện bằng bộ huy hiệu</p>
       <p>
         Bước 1: Xem livestreams trên học viện và thu nhập đủ 5 mã huy hiệu hàng
@@ -24,12 +23,13 @@ const KvRules: React.FC<Props> = (props) => {
           className="text-cyan-500"
           href="https://university.lazada.vn/cms/nynm"
           target="_blank"
+          rel="noreferrer"
         >
           https://university.lazada.vn/cms/nynm
         </a> 6 nhà bán hàng nhanh tay nhất sẽ có cơ hội nhận được
       </p>
 
-      <img src="/gift-list.png" className="max-w-full mt-2 mb-2" />
+      <img src="/gift-list.png" alt="gift" className="w-3/4 mt-2 mb-2 mr-auto ml-auto"/>
 
       <p>Lưu ý:</p>
       <p>

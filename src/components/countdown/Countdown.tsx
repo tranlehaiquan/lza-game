@@ -27,12 +27,12 @@ const CoundownUnit: React.FC<{ number: number }> = ({ number }) => {
   return (
     <div className="grid grid-cols-2 gap-2">
       {Array.from(numberString).map((i, index) => (
-        <span
-          className="bg-NeonCarrot p-2 rounded-xl border border-black"
+        <p
+          className="coundownUnit p-2 rounded-xl shadow-md border-black"
           key={index}
         >
-          {i}
-        </span>
+          <span className="z-10 relative">{i}</span>
+        </p>
       ))}
     </div>
   );
@@ -65,9 +65,9 @@ const Countdown: React.FC<Props> = ({ className, endDate, shadow = true }) => {
 
   return (
     <div className={clsx("grid grid-cols-4 md:gap-1 lg:gap-2", className)}>
-      {["days", "hours", "minutes", "seconds"].map((key) => (
+      {["days", "hours", "minutes", "seconds"].map((key, index) => (
         <div key={key} className={clsx("p-1 lg:p-2 text-center rounded-lg")}>
-          <p className="text-white text-xl md:text-6xl md:font-bold">
+          <p className={clsx("text-white text-xl md:text-4xl md:font-bold", index !== 3 && 'has-dot')}>
             <CoundownUnit number={get(durationShow, key, 0)} />
           </p>
           <p className="text-lg mt-2 text-blue-600">

@@ -1,66 +1,50 @@
-import React from "react";
-import { addDays, getISODay } from "date-fns";
+import React, { useEffect, useState } from "react";
 import Container from "../../components/container";
 import Countdown from "../../components/countdown";
 import KvRules from "../../components/kvRules";
 import Audio from "../../components/audio";
+import { getEventConfig } from "../../apis";
+import { STATUS } from "../../constants";
+import { EventDate } from "../../interface";
 
 interface Props {
   className?: string;
 }
-
-// follow the getISODay format (7 for Sunday, 1 for Monday)
-const dayOfWeekMap = {
-  Mon: 1,
-  Tue: 2,
-  Wed: 3,
-  Thur: 4,
-  Fri: 5,
-  Sat: 6,
-  Sun: 7,
-};
-
-const getDayOfLastWeek = (
-  dayOfWeek: keyof typeof dayOfWeekMap,
-  fromDate = new Date()
-) => {
-  const dateFrom = getISODay(fromDate);
-  const dateFind = dayOfWeekMap[dayOfWeek];
-  let offsetDays = 0;
-
-  if (dateFrom === dateFind) return fromDate;
-  if (dateFrom > dateFind) {
-    offsetDays = Object.keys(dayOfWeekMap).length - dateFrom + dateFind;
-  }
-  if (dateFrom < dateFind) {
-    offsetDays = dateFind - dateFrom;
-  }
-
-  return addDays(fromDate, offsetDays);
-};
-
 const Kv: React.FC<Props> = (props) => {
-  const nextMonday = getDayOfLastWeek("Mon");
+  const [status, setStatus] = useState(STATUS.idle);
+  const [eventDate, setEventDate] = useState<EventDate>();
 
+  useEffect(() => {
+    (async () => {
+      setStatus(STATUS.pending);
+      const data = await getEventConfig();
+      setEventDate(data.data);
+      setStatus(STATUS.resolved);
+    })();
+  }, []);
+  console.log(status)
   return (
     <div>
+      <img src="/lzd-logo.png" alt="logo" className="d-block fixed top-4 right-4" />
       <Container>
         <div className="text-center">
           <img
+            alt="title"
             src="/kv-title.png"
-            className="d-block mr-auto ml-auto max-w-full"
+            className="d-block mr-auto ml-auto max-w-2xl"
           />
           <Countdown
-            className="max-w-2xl mr-auto ml-auto"
-            endDate={nextMonday.toISOString()}
+            className="max-w-xl mr-auto ml-auto"
+            endDate={eventDate ? eventDate.startTime : new Date().toString()}
           />
           <KvRules />
         </div>
       </Container>
 
-      <Audio src="SOUND/KV chờ/videogameloop_29s_145bpm_LOOP.wav" className="fixed bottom-5 right-5" />
-
-      <img src="/check-points.png" className="d-block lg:w-9/12 w-4/5" />
+      <Audio
+        src="SOUND/KV chờ/videogameloop_29s_145bpm_LOOP.wav"
+        className="fixed bottom-5 right-5"
+      />
     </div>
   );
 };

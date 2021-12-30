@@ -4,6 +4,48 @@
 
 .app {
   @apply min-h-screen w-screen bg-no-repeat;
-  background-image: url("../public/bg-material.png"), url("../public/bg-lzd.png");
-  background-size: cover, cover;
+  background-color: #ddd;
+  background-image: url("../public/bg-lzd.png");
+  background-size: cover;
+  background-position: bottom;
+}
+
+@screen 2xl {
+  .app {
+    background-position: bottom;
+  }
+}
+
+.has-dot {
+  @apply relative;
+}
+
+.has-dot::after {
+  @apply absolute text-NeonCarrot;
+  content: ":";
+  top: 4px;
+  right: -17px;
+}
+
+.coundownUnit {
+  position: relative;
+  background-image: linear-gradient(
+    to bottom,
+    #fa8f40,
+    #fb9b45,
+    #fba84b,
+    #fcb352,
+    #fcbf5b
+  );
+}
+
+.coundownUnit::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: rgba(102, 65, 28, 0.14);
+  left: 0;
+  top: 50%;
+  z-index: 0;
 }
