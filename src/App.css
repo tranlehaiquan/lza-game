@@ -22,12 +22,14 @@
 
 .has-dot::after {
   @apply absolute text-NeonCarrot;
+  font-family: 'Libre Franklin', sans-serif;
   content: ":";
   top: 4px;
-  right: -17px;
+  right: -16px;
 }
 
 .coundownUnit {
+  font-family: 'Libre Franklin', sans-serif;
   position: relative;
   background-image: linear-gradient(
     to bottom,
@@ -47,5 +49,18 @@
   background: rgba(102, 65, 28, 0.14);
   left: 0;
   top: 50%;
+  z-index: 0;
+}
+
+.coundownUnit::after {
+  content: "";
+  position: absolute;
+  height: 14px;
+  width: calc(100% - 2px);
+  border-left: 1.5px solid rgba(0, 0, 0, 0.3);
+  border-right: 1.5px solid rgba(0, 0, 0, 0.3);
+  left: 1px;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 0;
 }

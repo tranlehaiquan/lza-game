@@ -24,17 +24,17 @@ const Kv: React.FC<Props> = (props) => {
   }, []);
   console.log(status)
   return (
-    <div>
-      <img src="/lzd-logo.png" alt="logo" className="d-block fixed top-4 right-4" />
+    <div className="pb-80">
+      <img src="/lzd-logo.png" alt="logo" className="d-block absolute top-4 right-4" />
       <Container>
         <div className="text-center">
           <img
             alt="title"
             src="/kv-title.png"
-            className="d-block mr-auto ml-auto max-w-2xl"
+            className="d-block mr-auto ml-auto max-w-2xl pt-2"
           />
           <Countdown
-            className="max-w-xl mr-auto ml-auto"
+            className="mr-auto ml-auto justify-center"
             endDate={eventDate ? eventDate.startTime : new Date().toString()}
           />
           <KvRules />

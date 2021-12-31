@@ -28,7 +28,7 @@ const CoundownUnit: React.FC<{ number: number }> = ({ number }) => {
     <div className="grid grid-cols-2 gap-2">
       {Array.from(numberString).map((i, index) => (
         <p
-          className="coundownUnit p-2 rounded-xl shadow-md border-black"
+          className="coundownUnit w-10 p-2 rounded-lg shadow-md border-black"
           key={index}
         >
           <span className="z-10 relative">{i}</span>
@@ -64,13 +64,13 @@ const Countdown: React.FC<Props> = ({ className, endDate, shadow = true }) => {
   durationShow.days = days;
 
   return (
-    <div className={clsx("grid grid-cols-4 md:gap-1 lg:gap-2", className)}>
+    <div className={clsx("flex", className)}>
       {["days", "hours", "minutes", "seconds"].map((key, index) => (
-        <div key={key} className={clsx("p-1 lg:p-2 text-center rounded-lg")}>
+        <div key={key} className={clsx("p-1 pr-3 pl-3 text-center rounded-lg")}>
           <p className={clsx("text-white text-xl md:text-4xl md:font-bold", index !== 3 && 'has-dot')}>
             <CoundownUnit number={get(durationShow, key, 0)} />
           </p>
-          <p className="text-lg mt-2 text-blue-600">
+          <p className="text-lg mt-2" style={{ color: '#2c609a' }}>
             {`${get(UnitTrans, key)}`.toUpperCase()}
           </p>
         </div>
