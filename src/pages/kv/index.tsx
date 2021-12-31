@@ -22,10 +22,14 @@ const Kv: React.FC<Props> = (props) => {
       setStatus(STATUS.resolved);
     })();
   }, []);
-  console.log(status)
+  console.log(status);
   return (
     <div className="pb-80">
-      <img src="/lzd-logo.png" alt="logo" className="d-block absolute top-4 right-4" />
+      <img
+        src="/lzd-logo.png"
+        alt="logo"
+        className="d-block absolute top-4 right-4 max-w-xs"
+      />
       <Container>
         <div className="text-center">
           <img

@@ -27,10 +27,16 @@ const KvRules: React.FC<Props> = (props) => {
         >
           https://university.lazada.vn/cms/nynm
         </a>
-        <p className="text-center">6 nhà bán hàng nhanh tay nhất sẽ có cơ hội nhận được</p>
+        <p className="text-center">
+          6 nhà bán hàng nhanh tay nhất sẽ có cơ hội nhận được
+        </p>
       </p>
 
-      <img src="/gift-list.png" alt="gift" className="w-3/4 mt-2 mb-2 mr-auto ml-auto"/>
+      <img
+        src="/gift-list.png"
+        alt="gift"
+        className="w-3/4 mt-2 mb-2 mr-auto ml-auto"
+      />
 
       <p>Lưu ý:</p>
       <p>
