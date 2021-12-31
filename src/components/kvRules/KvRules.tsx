@@ -26,7 +26,8 @@ const KvRules: React.FC<Props> = (props) => {
           rel="noreferrer"
         >
           https://university.lazada.vn/cms/nynm
-        </a> 6 nhà bán hàng nhanh tay nhất sẽ có cơ hội nhận được
+        </a>
+        <p className="text-center">6 nhà bán hàng nhanh tay nhất sẽ có cơ hội nhận được</p>
       </p>
 
       <img src="/gift-list.png" alt="gift" className="w-3/4 mt-2 mb-2 mr-auto ml-auto"/>
