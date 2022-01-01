@@ -24,37 +24,37 @@ const Kv: React.FC<Props> = (props) => {
   }, []);
   console.log(status);
   return (
-    <div className="md:pb-96">
+    <div className="lg:pb-96">
       <img
         src="/lzd-logo.png"
         alt="logo"
-        className="d-block absolute top-10 md:top-4 right-1/2 md:right-4 max-w-xs translate-x-1/2 md:translate-x-0"
+        className="d-block absolute top-10 lg:top-4 right-1/2 lg:right-4 max-w-xs translate-x-1/2 lg:translate-x-0"
       />
 
       <Container>
-        <div className="text-center md:pt-0 pt-24">
+        <div className="text-center lg:pt-0 pt-24">
           <img
             alt="title"
             src="/kv-title.png"
-            className="d-block mr-auto ml-auto max-w-full md:max-w-2xl pt-2"
+            className="d-block mr-auto ml-auto max-w-full xl:max-w-2xl pt-2"
           />
           <img
             alt="title-2"
             src="/title-2.png"
-            className="d-block mr-auto ml-auto max-w-full md:max-w-2xl pt-2"
+            className="d-block mr-auto ml-auto max-w-full xl:max-w-2xl pt-2"
           />
           <Countdown
             className="mr-auto ml-auto justify-center"
             endDate={eventDate ? eventDate.startTime : new Date().toString()}
           />
           <KvRules />
-
-          <img
-            src="/points-mobile.png"
-            className="block md:hidden mt-2"
-          />
         </div>
       </Container>
+
+      <div className="lg:block hidden w-full">
+        <img src="/check-points.png" className="mt-2" alt="points" />
+      </div>
+      <img src="/points-mobile.png" className="block lg:hidden mt-2"  alt="points"/>
 
       <Audio
         src="SOUND/KV chờ/videogameloop_29s_145bpm_LOOP.wav"
