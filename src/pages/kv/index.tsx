@@ -24,7 +24,7 @@ const Kv: React.FC<Props> = (props) => {
   }, []);
   console.log(status);
   return (
-    <div className="lg:pb-96">
+    <div>
       <img
         src="/lzd-logo.png"
         alt="logo"
