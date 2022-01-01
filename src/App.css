@@ -5,7 +5,8 @@
 .app {
   @apply min-h-screen w-screen bg-no-repeat;
   background-color: #ddd;
-  background-image: url("../public/tree-mobile.png"), url("../public/bg-mobile.png");
+  background-image: url("../public/tree-mobile.png"),
+    url("../public/bg-mobile.png");
   background-size: contain, cover;
   background-position: top center, bottom;
 }
@@ -23,15 +24,24 @@
 }
 
 .has-dot::after {
-  @apply absolute text-NeonCarrot;
-  font-family: 'Libre Franklin', sans-serif;
+  @apply absolute text-NeonCarrot text-3xl top-1/2 -translate-y-1/2 translate-x-full;
+  font-family: "Libre Franklin", sans-serif;
   content: ":";
-  top: 4px;
-  right: -16px;
+  right: 0;
+}
+
+@screen sm {
+
+}
+
+@screen 2xl {
+  .has-dot::after {
+    right: -0.25rem;
+  }
 }
 
 .coundownUnit {
-  font-family: 'Libre Franklin', sans-serif;
+  font-family: "Libre Franklin", sans-serif;
   position: relative;
   background-image: linear-gradient(
     to bottom,
