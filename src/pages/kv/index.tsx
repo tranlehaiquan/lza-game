@@ -3,11 +3,12 @@ import Container from "../../components/container";
 import Countdown from "../../components/countdown";
 import KvRules from "../../components/kvRules";
 import Audio from "../../components/audio";
-import { getEventConfig } from "../../apis";
+import { getEventConfig } from "../../services/getConfig";
 import { STATUS } from "../../constants";
 import { EventDate } from "../../interface";
 import { isPast } from "date-fns";
 import Button from "../../components/button";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   className?: string;
@@ -15,6 +16,7 @@ interface Props {
 const Kv: React.FC<Props> = (props) => {
   const [status, setStatus] = useState(STATUS.idle);
   const [eventDate, setEventDate] = useState<EventDate>();
+  let navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -26,8 +28,12 @@ const Kv: React.FC<Props> = (props) => {
   }, []);
   console.log(status);
 
-  const isInEvent = eventDate ? isPast(new Date(eventDate.startTime).getTime()) : false;
-  // const isInEvent = eventDate ? isPast(new Date().getTime() - 1) : false;
+  // const isInEvent = eventDate ? isPast(new Date(eventDate.startTime).getTime()) : false;
+  const isInEvent = eventDate ? isPast(new Date().getTime() - 1) : false;
+
+  const handleRegister = () => {
+    navigate('/register')
+  }
 
   return (
     <div>
@@ -70,7 +76,7 @@ const Kv: React.FC<Props> = (props) => {
 
       {isInEvent && (
         <div className="text-center pb-10 pr-5">
-          <Button onClick={() => console.log("123")} className=" md:text-2xl">
+          <Button onClick={handleRegister} className=" md:text-2xl">
             Đăng Ký
           </Button>
         </div>
