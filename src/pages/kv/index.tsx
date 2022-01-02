@@ -26,7 +26,8 @@ const Kv: React.FC<Props> = (props) => {
   }, []);
   console.log(status);
 
-  const isInEvent = eventDate ? isPast(new Date().getTime() - 1) : false;
+  const isInEvent = eventDate ? isPast(new Date(eventDate.startTime).getTime()) : false;
+  // const isInEvent = eventDate ? isPast(new Date().getTime() - 1) : false;
 
   return (
     <div>
