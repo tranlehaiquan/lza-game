@@ -69,6 +69,9 @@ const Kv: React.FC<Props> = (props) => {
             >
               {({ handleSubmit }) => (
                 <>
+                  <h1 className="text-4xl text-center uppercase text-white font-bold">
+                    Thông Tin Nhà bán Hàng Cần Cung Cấp
+                  </h1>
                   <label className="block mb-6">
                     <TextInputFormik
                       label={"Tên gian hàng"}
