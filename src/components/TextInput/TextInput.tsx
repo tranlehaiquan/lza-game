@@ -37,7 +37,7 @@ const TextInput: React.FC<TextInputProps> = ({
         type={type}
         name={name}
         className={clsx(
-          isError ? 'border-red-500' : 'border-transparent',
+          isError ? 'border-red-600' : 'border-transparent',
           'mt-1 block w-full rounded-md bg-gray-100 focus:border-gray-500 focus:bg-white focus:ring-0'
         )}
         placeholder={placeholder}
@@ -46,7 +46,7 @@ const TextInput: React.FC<TextInputProps> = ({
         value={value}
       />
       {message && (
-        <span className={clsx(isError && 'text-red-500', 'text-sm lg:text-base')}>{message}</span>
+        <span className={clsx(isError && 'text-red-600', 'text-sm lg:text-base')}>{message}</span>
       )}
     </label>
   );

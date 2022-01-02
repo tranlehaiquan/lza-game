@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import Container from "../../components/container";
 import Audio from "../../components/audio";
-import { STATUS } from "../../constants";
 import Button from "../../components/button";
 import { TextInputFormik } from "../../components/TextInput";
 import * as yup from "yup";
@@ -20,10 +19,10 @@ const Kv: React.FC<Props> = (props) => {
   let navigate = useNavigate();
   const schema = useMemo(() => {
     return yup.object().shape({
-      storeName: yup.string().required("Tên cửa hàng là bắt buộc!"),
-      storeCode: yup.string().required("Mã cửa hàng là bắt buộc!"),
+      storeName: yup.string().required("Tên gian hàng là bắt buộc!"),
+      storeCode: yup.string().required("Mã gian hàng là bắt buộc!"),
       fullName: yup.string().required("Họ tên bắt buộc!"),
-      email: yup.string().required("Email là bắt buộc!"),
+      email: yup.string().email("Email không hợp lệ").required("Email là bắt buộc!"),
       phoneNumber: yup.string().required("Số điện thoại là bắt buộc!"),
       address: yup.string().required("Địa chỉ là bắt buộc"),
     });
@@ -69,8 +68,8 @@ const Kv: React.FC<Props> = (props) => {
             >
               {({ handleSubmit }) => (
                 <>
-                  <h1 className="text-4xl text-center uppercase text-white font-bold">
-                    Thông Tin Nhà bán Hàng Cần Cung Cấp
+                  <h1 className="text-2xl lg:text-3xl mb-2 text-center uppercase text-white font-bold">
+                    Thông Tin <br /> Nhà bán Hàng Cần Cung Cấp
                   </h1>
                   <label className="block mb-6">
                     <TextInputFormik
@@ -83,7 +82,7 @@ const Kv: React.FC<Props> = (props) => {
                   </label>
                   <label className="block mb-6">
                     <TextInputFormik
-                      label={"Mã gian hàng"}
+                      label={"Mã gian hàng (cần nhập chính xác để nhận thưởng)"}
                       type="text"
                       name="storeCode"
                       placeholder={"Mã gian hàng"}

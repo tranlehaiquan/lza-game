@@ -1,8 +1,7 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "../../components/container";
 import Audio from "../../components/audio";
 import { STATUS } from "../../constants";
-import * as yup from "yup";
 
 interface Props {
   className?: string;
@@ -16,6 +15,8 @@ const Kv: React.FC<Props> = (props) => {
       setStatus(STATUS.resolved);
     })();
   }, []);
+
+  console.log(status)
 
   return (
     <div>
