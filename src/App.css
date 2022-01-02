@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .app {
-  @apply min-h-screen w-screen bg-no-repeat;
+  @apply min-h-screen bg-no-repeat;
   background-color: #ddd;
   background-image: url("../public/tree-mobile.png"),
     url("../public/bg-mobile.png");

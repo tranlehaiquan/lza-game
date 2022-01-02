@@ -27,16 +27,25 @@ const KvRules: React.FC<Props> = (props) => {
         >
           https://university.lazada.vn/cms/nynm
         </a>
-        <p className="text-center">
+        <p className="text-center pt-2 lg:pt-0">
           6 nhà bán hàng nhanh tay nhất sẽ có cơ hội nhận được
         </p>
       </p>
 
-      <img
-        src="/gift-list.png"
-        alt="gift"
-        className="w-3/4 mt-2 mb-2 mr-auto ml-auto"
-      />
+      <div className="grid lg:grid-cols-3 gap-2">
+        <div className="uppercase flex lg:justify-center items-center">
+          <img src="/gift1.png" style={{ maxWidth: 80 }} className="max-w-xs" alt="gift 1" />
+          <span>3 load bluetooth jbl charge 4</span>
+        </div>
+        <div className="uppercase flex lg:justify-center items-center">
+          <img src="/gift2.png" style={{ maxWidth: 80 }} className="max-w-xs" alt="gift 2" />
+          <span>2 camera logitech c930e </span>
+        </div>
+        <div className="uppercase flex lg:justify-center items-center">
+          <img src="/gift3.png" style={{ maxWidth: 80 }} className="max-w-xs" alt="gift 3" />
+          <span>1 airpod 3</span>
+        </div>
+      </div>
 
       <p>Lưu ý:</p>
       <p>

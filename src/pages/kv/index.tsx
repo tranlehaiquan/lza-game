@@ -6,6 +6,8 @@ import Audio from "../../components/audio";
 import { getEventConfig } from "../../apis";
 import { STATUS } from "../../constants";
 import { EventDate } from "../../interface";
+import { isPast } from "date-fns";
+import Button from "../../components/button";
 
 interface Props {
   className?: string;
@@ -23,6 +25,9 @@ const Kv: React.FC<Props> = (props) => {
     })();
   }, []);
   console.log(status);
+
+  const isInEvent = eventDate ? isPast(new Date().getTime() - 1) : false;
+
   return (
     <div>
       <img
@@ -54,7 +59,20 @@ const Kv: React.FC<Props> = (props) => {
       <div className="lg:block hidden w-full">
         <img src="/check-points.png" className="mt-2" alt="points" />
       </div>
-      <img src="/points-mobile.png" className="block lg:hidden mt-2"  alt="points"/>
+
+      <img
+        src="/points-mobile.png"
+        className="block lg:hidden mt-2"
+        alt="points"
+      />
+
+      {isInEvent && (
+        <div className="text-center pb-10 pr-5">
+          <Button onClick={() => console.log("123")} className=" md:text-2xl">
+            Đăng Ký
+          </Button>
+        </div>
+      )}
 
       <Audio
         src="SOUND/KV chờ/videogameloop_29s_145bpm_LOOP.wav"
