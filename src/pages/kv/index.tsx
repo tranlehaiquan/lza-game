@@ -33,7 +33,8 @@ const Kv: React.FC<Props> = (props) => {
       <img
         src="/lzd-logo.png"
         alt="logo"
-        className="d-block absolute top-10 lg:top-4 right-1/2 lg:right-4 max-w-xs translate-x-1/2 lg:translate-x-0"
+        className="d-block absolute top-10 lg:top-4 right-1/2 lg:right-4 translate-x-1/2 lg:translate-x-0"
+        style={{ maxWidth: 250 }}
       />
 
       <Container>
