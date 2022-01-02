@@ -68,7 +68,7 @@ const Kv: React.FC<Props> = (props) => {
             >
               {({ handleSubmit }) => (
                 <>
-                  <h1 className="text-2xl lg:text-3xl mb-2 text-center uppercase text-white font-bold">
+                  <h1 className="text-xl md:text-2xl lg:text-3xl mb-2 text-center uppercase text-white font-bold">
                     Thông Tin <br /> Nhà bán Hàng Cần Cung Cấp
                   </h1>
                   <label className="block mb-6">

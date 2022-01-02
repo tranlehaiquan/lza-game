@@ -76,3 +76,7 @@
   transform: translateY(-50%);
   z-index: 0;
 }
+
+.modal-rules {
+  max-height: calc(100vh - 60px)
+}
