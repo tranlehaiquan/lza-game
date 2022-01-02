@@ -125,12 +125,12 @@ const Kv: React.FC<Props> = (props) => {
                   </label>
 
                   <div className="text-center">
-                    <button
-                      className="bg-white px-5 py-2 rounded-lg mt-2"
+                    <Button
+                      className="px-5 py-2 rounded-lg mt-2"
                       onClick={() => handleSubmit()}
                     >
                       Đăng ký
-                    </button>
+                    </Button>
                   </div>
                 </>
               )}
