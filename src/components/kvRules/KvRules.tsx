@@ -32,7 +32,7 @@ const KvRules: React.FC<Props> = (props) => {
         </p>
       </p>
 
-      <div className="grid lg:grid-cols-3 gap-2">
+      <div className="grid lg:grid-cols-3 gap-2 text-sm">
         <div className="uppercase flex lg:justify-center items-center">
           <img src="/gift1.png" style={{ maxWidth: 80 }} className="max-w-xs" alt="gift 1" />
           <span>3 load bluetooth jbl charge 4</span>
