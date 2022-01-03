@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --hover-color: #ff9502;
+  --toastify-toast-width: 350px;
+}
+
 .app {
   @apply min-h-screen bg-no-repeat;
   background-color: #ddd;
@@ -31,7 +36,6 @@
 }
 
 @screen sm {
-
 }
 
 @screen 2xl {
@@ -78,5 +82,33 @@
 }
 
 .modal-rules {
-  max-height: calc(100vh - 60px)
+  max-height: calc(100vh - 60px);
+}
+
+.code-item {
+  @apply cursor-pointer;
+  transition: all 0.5s ease 0s;
+  user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.code-item:hover {
+  filter: drop-shadow(-2px 0px 2px var(--hover-color))
+    drop-shadow(-2px 2px 2px var(--hover-color))
+    drop-shadow(2px 2px 2px var(--hover-color))
+    drop-shadow(2px -2px 2px var(--hover-color));
+}
+
+.path-wrapper {
+  transform-origin: left top;
+}
+
+.code-item-disabled,
+.code-item-disabled:hover {
+  cursor: inital;
+  filter: grayscale(1);
 }

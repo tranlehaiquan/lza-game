@@ -9,12 +9,16 @@ import shopRegister from "../../services/shopRegister";
 import { useNavigate } from "react-router-dom";
 import { RulesModal } from "../../components/modal";
 import { globalLoadingContext } from "../../components/globalLoading/GlobalLoading";
+import { setAuth } from "../../services/axios";
+import { useDispatch } from "react-redux";
+import { setAuthenticated, turnOnSound } from "../../store/settingSlice/settingSlice";
 
 interface Props {
   className?: string;
 }
 const Kv: React.FC<Props> = (props) => {
   const [show, setShow] = useState(false);
+  const dispatch = useDispatch()
   const { showLoading, hideLoading } = useContext(globalLoadingContext);
   let navigate = useNavigate();
   const schema = useMemo(() => {
@@ -22,11 +26,20 @@ const Kv: React.FC<Props> = (props) => {
       storeName: yup.string().required("Tên gian hàng là bắt buộc!"),
       storeCode: yup.string().required("Mã gian hàng là bắt buộc!"),
       fullName: yup.string().required("Họ tên bắt buộc!"),
-      email: yup.string().email("Email không hợp lệ").required("Email là bắt buộc!"),
+      email: yup
+        .string()
+        .email("Email không hợp lệ")
+        .required("Email là bắt buộc!"),
       phoneNumber: yup.string().required("Số điện thoại là bắt buộc!"),
       address: yup.string().required("Địa chỉ là bắt buộc"),
     });
   }, []);
+
+  const handlePlay = () => {
+    navigate("/codes");
+
+    dispatch(turnOnSound())
+  };
 
   return (
     <div>
@@ -61,6 +74,8 @@ const Kv: React.FC<Props> = (props) => {
                 const dataRs = await shopRegister(values);
                 const { data } = dataRs;
                 if (data.success && data.message) {
+                  dispatch(setAuthenticated())
+                  setAuth(data.data);
                   setShow(true);
                 }
                 hideLoading();
@@ -151,7 +166,7 @@ const Kv: React.FC<Props> = (props) => {
         alt="points"
       />
 
-      {show && <RulesModal onPlay={() => navigate("/codes")} />}
+      {show && <RulesModal onPlay={handlePlay} />}
 
       <Audio
         src="SOUND/KV chờ/videogameloop_29s_145bpm_LOOP.wav"

@@ -20,7 +20,7 @@ const RulesModal: React.FC<Props> = (props) => {
 
             <button
               onClick={props.onPlay}
-              className=" bg-NeonCarrot text-white p-2 rounded-xl -translate-y-1/2"
+              className=" bg-NeonCarrot text-white p-2 rounded-xl -translate-y-2/3"
             >
               <PlayIcon className="h-12 w-12" />
             </button>

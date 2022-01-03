@@ -1,5 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { VolumeUpIcon, VolumeOffIcon } from "@heroicons/react/solid";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store";
+import {
+  turnOffSound,
+  turnOnSound,
+} from "../../store/settingSlice/settingSlice";
 
 interface Props {
   className?: string;
@@ -7,35 +13,38 @@ interface Props {
 }
 
 const Audio: React.FC<Props> = ({ className, src }) => {
-  const [muted, setMuted] = useState(false);
+  const { isMuted } = useSelector((state: RootState) => state.setting);
+  const dispatch = useDispatch();
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     if (audioRef) {
       if (audioRef.current?.paused) {
-        setMuted(true);
       } else {
-        setMuted(!!audioRef.current?.muted);
+        dispatch(turnOffSound());
       }
     }
   }, []);
 
   const toggle = () => {
     audioRef.current?.play();
-
-    setMuted(!muted);
+    if (isMuted) {
+      dispatch(turnOnSound());
+    } else {
+      dispatch(turnOffSound());
+    }
   };
 
   return (
     <div className={className}>
       <button onClick={toggle}>
-        {!muted ? (
+        {!isMuted ? (
           <VolumeUpIcon className="h-7 w-7 text-white" />
         ) : (
           <VolumeOffIcon className="h-7 w-7 text-white" />
         )}
       </button>
-      <audio loop muted={muted} autoPlay ref={audioRef}>
+      <audio loop muted={isMuted} autoPlay ref={audioRef}>
         <source
           src={src || "SOUND/KV chờ/videogameloop_29s_145bpm_LOOP.wav"}
           type="audio/wav"
