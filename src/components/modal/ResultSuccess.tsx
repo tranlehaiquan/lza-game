@@ -1,5 +1,5 @@
 import React from "react";
-import PlayIcon from "@heroicons/react/outline/PlayIcon";
+import XIcon from "@heroicons/react/outline/XIcon";
 
 interface Props {
   className?: string;
@@ -18,12 +18,12 @@ const RulesModal: React.FC<Props> = (props) => {
               className="max-w-full lg:max-w-2xl modal-rules"
             />
 
-            {/* <button
+            <button
               onClick={props.onPlay}
-              className=" bg-NeonCarrot text-white p-2 rounded-xl -translate-y-2/3"
+              className=" bg-NeonCarrot text-white p-2 rounded-full -translate-y-2/3"
             >
-              <PlayIcon className="h-12 w-12" />
-            </button> */}
+              <XIcon className="h-12 w-12" />
+            </button>
           </div>
         </div>
       </div>

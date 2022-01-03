@@ -22,7 +22,12 @@
     background-size: cover;
     background-position: bottom;
   }
+
+  .appSecond {
+    background-image: url("../public/bg-mobile.png");
+  }
 }
+
 
 .has-dot {
   @apply relative;

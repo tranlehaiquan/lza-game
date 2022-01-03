@@ -25,7 +25,7 @@ const Kv: React.FC<Props> = (props) => {
   console.log(status);
 
   return (
-    <div>
+    <div className="app appSecond">
       <img
         src="/lzd-logo.png"
         alt="logo"
@@ -34,10 +34,10 @@ const Kv: React.FC<Props> = (props) => {
       />
 
       <Container>
-        <img src="/image-codes-enter.png" alt="lzd" />
+        <img src="/bg-2.png" alt="lzd" />
       </Container>
 
-      <CodesEnter />
+      <CodesEnter className="-mt-20" />
 
       <Audio
         src="SOUND/KV chờ/videogameloop_29s_145bpm_LOOP.wav"

@@ -42,7 +42,7 @@ const Kv: React.FC<Props> = (props) => {
   };
 
   return (
-    <div>
+    <div className="app">
       <img
         src="/lzd-logo.png"
         alt="logo"

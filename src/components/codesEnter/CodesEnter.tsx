@@ -7,12 +7,13 @@ import submitCode from "../../services/submitCode";
 import { toast } from "react-toastify";
 import { noop } from "lodash";
 import { RootState } from "../../store";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Button from "../button";
 import { getResult } from "../../services/getResult";
 import ResultSuccess from "../modal/ResultSuccess";
 import ResultFail from "../modal/ResultFail";
+import { reset } from "../../store/settingSlice/settingSlice";
 
 interface Props {
   className?: string;
@@ -23,7 +24,8 @@ const MAP_DIME = {
   height: 898,
 };
 
-const CodesEnter: React.FC<Props> = (props) => {
+const CodesEnter: React.FC<Props> = ({ className }) => {
+  const dispatch = useDispatch();
   const setting = useSelector((state: RootState) => state.setting);
   const navigate = useNavigate();
   const { showLoading, hideLoading } = useContext(globalLoadingContext);
@@ -35,7 +37,7 @@ const CodesEnter: React.FC<Props> = (props) => {
 
   useEffect(() => {
     if (!setting.isAuthenticated) {
-      toast.info("Vui lòng đăng nhập!");
+      toast.info("Vui lòng đăng ký để tham gia!");
       navigate("/");
     }
   }, []);
@@ -80,9 +82,14 @@ const CodesEnter: React.FC<Props> = (props) => {
     hideLoading();
   };
 
+  const handleClose = () => {
+    dispatch(reset())
+    navigate('/')
+  }
+
   return (
     <div
-      className="relative"
+      className={clsx("relative", className)}
       style={{
         paddingTop: `${(MAP_DIME.height / MAP_DIME.width) * 100}%`,
         width: "100%",
@@ -91,7 +98,7 @@ const CodesEnter: React.FC<Props> = (props) => {
       <div
         className=" absolute path-wrapper top-0"
         style={{
-          transform: `scale(${(window.innerWidth - 100) / MAP_DIME.width})`,
+          transform: `scale(${(window.innerWidth - 300) / MAP_DIME.width})`,
         }}
       >
         <img
@@ -189,12 +196,12 @@ const CodesEnter: React.FC<Props> = (props) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl border-NeonCarrot">
+                <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl border-NeonCarrot border-4">
                   <Dialog.Title
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                    Nhập Mã Huy Hiệu {activeNumber + 1}
+                    {/* Nhập Mã Huy Hiệu {activeNumber + 1} */}
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
@@ -209,10 +216,10 @@ const CodesEnter: React.FC<Props> = (props) => {
                     </p>
                   </div>
 
-                  <div>
+                  <div className="text-center">
                     <Button
                       type="button"
-                      className="inline-flex justify-center px-4 py-2 text-sm border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                      className="inline-flex justify-center px-4 py-2 text-sm border border-transparent rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
                       onClick={handleSubmitCode}
                     >
                       Xác Nhận
@@ -225,11 +232,11 @@ const CodesEnter: React.FC<Props> = (props) => {
         </Transition>
       </div>
 
-      {showModal === "success" && <ResultSuccess onPlay={console.log} />}
-      {showModal === "fail" && <ResultFail onPlay={console.log} />}
+      {showModal === "success" && <ResultSuccess onPlay={handleClose} />}
+      {showModal === "fail" && <ResultFail onPlay={handleClose} />}
 
       {codes.length === 5 && (
-        <Button className="fixed right-14 bottom-3" onClick={handleGetResult}>
+        <Button className="fixed right-1/2 bottom-3 translate-x-1/2" onClick={handleGetResult}>
           Xem Kết Quả
         </Button>
       )}

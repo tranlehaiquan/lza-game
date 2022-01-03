@@ -1,5 +1,4 @@
 import axios from "./axios";
-import { AxiosResponse } from "axios";
 
 const submitCode = (data: { badgeType: number; code: string }) =>
   axios.post<{

@@ -1,5 +1,4 @@
 import axios from "./axios";
-import { AxiosResponse } from "axios";
 
 const shopRegister = (data: any) =>
   axios.post<{

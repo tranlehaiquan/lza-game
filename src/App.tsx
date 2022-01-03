@@ -7,7 +7,7 @@ import GlobalLoading from "./components/globalLoading";
 
 function App() {
   return (
-    <div className="app">
+    <div className="">
       <GlobalLoading>
         <Routes>
           <Route path="/" element={<Kv />} />

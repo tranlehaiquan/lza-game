@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 export interface CounterState {
   isAuthenticated: boolean;
@@ -23,10 +23,14 @@ export const counterSlice = createSlice({
     turnOffSound: (state) => {
       state.isMuted = true;
     },
+    reset: (state) => {
+      state = initialState;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setAuthenticated, turnOffSound, turnOnSound } = counterSlice.actions;
+export const { setAuthenticated, turnOffSound, turnOnSound, reset } =
+  counterSlice.actions;
 
 export default counterSlice.reducer;
