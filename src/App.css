@@ -18,16 +18,16 @@
 
 @screen lg {
   .app {
-    background-image: url("../public/bg-lzd.png");
-    background-size: cover;
-    background-position: bottom;
+    background-size: contain, cover;
+    background-position: top center, bottom;
   }
 
   .appSecond {
-    background-image: url("../public/bg-mobile.png");
+    background-image: url("../public/codes-bg.png"), url("../public/bg-linear.png");
+    background-size: contain, cover;
+    background-position: top left, bottom;
   }
 }
-
 
 .has-dot {
   @apply relative;
@@ -94,11 +94,11 @@
   @apply cursor-pointer;
   transition: all 0.5s ease 0s;
   user-drag: none;
-    -webkit-user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .code-item:hover {

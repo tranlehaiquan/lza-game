@@ -24,6 +24,14 @@ const MAP_DIME = {
   height: 898,
 };
 
+enum MESSAGE {
+  "ShopXịn",
+  "FREESHIP MAX",
+  "Vourcher Tích Lũy!",
+  "COIN",
+  "HOÀN TIỀN MAX",
+}
+
 const CodesEnter: React.FC<Props> = ({ className }) => {
   const dispatch = useDispatch();
   const setting = useSelector((state: RootState) => state.setting);
@@ -43,6 +51,9 @@ const CodesEnter: React.FC<Props> = ({ className }) => {
   }, []);
 
   const handleClickCode = () => {
+    const audio = new Audio("/SOUND/tieéng click/click.wav");
+    audio.play();
+
     setShowCodeInput(true);
   };
 
@@ -67,7 +78,7 @@ const CodesEnter: React.FC<Props> = ({ className }) => {
       setCode("");
       audio.play();
 
-      toast.success(`Nhập Thành Công Mã Huy Hiệu ${activeNumber + 1}`);
+      toast.success(`Nhập Thành Công Mã Huy Hiệu ${MESSAGE[activeNumber]}`);
     } catch (err) {
       toast.error("Thất bại, vui lòng thử lại sau!");
     } finally {
@@ -76,6 +87,8 @@ const CodesEnter: React.FC<Props> = ({ className }) => {
   };
 
   const handleGetResult = async () => {
+    const audio = new Audio("/SOUND/mở mật thư/Paper Crunch.mp3");
+    audio.play();
     showLoading();
     const { data } = await getResult();
     setShowModal(data.data ? "success" : "fail");
@@ -83,9 +96,9 @@ const CodesEnter: React.FC<Props> = ({ className }) => {
   };
 
   const handleClose = () => {
-    dispatch(reset())
-    navigate('/')
-  }
+    dispatch(reset());
+    navigate("/");
+  };
 
   return (
     <div
@@ -236,7 +249,10 @@ const CodesEnter: React.FC<Props> = ({ className }) => {
       {showModal === "fail" && <ResultFail onPlay={handleClose} />}
 
       {codes.length === 5 && (
-        <Button className="fixed right-1/2 bottom-3 translate-x-1/2" onClick={handleGetResult}>
+        <Button
+          className="fixed right-1/2 bottom-3 translate-x-1/2"
+          onClick={handleGetResult}
+        >
           Xem Kết Quả
         </Button>
       )}

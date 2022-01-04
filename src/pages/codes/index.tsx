@@ -33,9 +33,9 @@ const Kv: React.FC<Props> = (props) => {
         style={{ maxWidth: 250 }}
       />
 
-      <Container>
-        <img src="/bg-2.png" alt="lzd" />
-      </Container>
+      <div>
+        <img src="/codes-banner.png" alt="lzd" className="max-w-full" />
+      </div>
 
       <CodesEnter className="-mt-20" />
 

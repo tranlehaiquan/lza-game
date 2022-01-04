@@ -11,14 +11,18 @@ import { RulesModal } from "../../components/modal";
 import { globalLoadingContext } from "../../components/globalLoading/GlobalLoading";
 import { setAuth } from "../../services/axios";
 import { useDispatch } from "react-redux";
-import { setAuthenticated, turnOnSound } from "../../store/settingSlice/settingSlice";
+import {
+  setAuthenticated,
+  turnOnSound,
+} from "../../store/settingSlice/settingSlice";
+import { toast } from "react-toastify";
 
 interface Props {
   className?: string;
 }
 const Kv: React.FC<Props> = (props) => {
   const [show, setShow] = useState(false);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { showLoading, hideLoading } = useContext(globalLoadingContext);
   let navigate = useNavigate();
   const schema = useMemo(() => {
@@ -38,7 +42,7 @@ const Kv: React.FC<Props> = (props) => {
   const handlePlay = () => {
     navigate("/codes");
 
-    dispatch(turnOnSound())
+    dispatch(turnOnSound());
   };
 
   return (
@@ -73,10 +77,15 @@ const Kv: React.FC<Props> = (props) => {
                 showLoading();
                 const dataRs = await shopRegister(values);
                 const { data } = dataRs;
-                if (data.success && data.message) {
-                  dispatch(setAuthenticated())
+                if (data.success) {
+                  dispatch(setAuthenticated());
                   setAuth(data.data);
                   setShow(true);
+                }
+
+                if (!data.success) {
+                  toast.error(data.message);
+                  navigate("/");
                 }
                 hideLoading();
               }}
