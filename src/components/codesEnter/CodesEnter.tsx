@@ -125,7 +125,7 @@ const CodesEnter: React.FC<Props> = ({ className }) => {
           <img
             src="/code-1.png"
             className={clsx(
-              "absolute code-item",
+              "absolute code-item", activeNumber === 0 && 'code-item-active' ,
               activeNumber >= 0 || "code-item-disabled"
             )}
             alt="code1"
@@ -135,7 +135,7 @@ const CodesEnter: React.FC<Props> = ({ className }) => {
           <img
             src="/code-2.png"
             className={clsx(
-              "absolute code-item",
+              "absolute code-item", activeNumber === 1 && 'code-item-active' ,
               activeNumber >= 1 || "code-item-disabled"
             )}
             alt="code2"
@@ -145,7 +145,7 @@ const CodesEnter: React.FC<Props> = ({ className }) => {
           <img
             src="/code-3.png"
             className={clsx(
-              "absolute code-item",
+              "absolute code-item", activeNumber === 2 && 'code-item-active' ,
               activeNumber >= 2 || "code-item-disabled"
             )}
             alt="code3"
@@ -155,7 +155,7 @@ const CodesEnter: React.FC<Props> = ({ className }) => {
           <img
             src="/code-4.png"
             className={clsx(
-              "absolute code-item",
+              "absolute code-item", activeNumber === 3 && 'code-item-active' ,
               activeNumber >= 3 || "code-item-disabled"
             )}
             alt="code4"
@@ -165,7 +165,7 @@ const CodesEnter: React.FC<Props> = ({ className }) => {
           <img
             src="/code-5.png"
             className={clsx(
-              "absolute code-item",
+              "absolute code-item", activeNumber === 4 && 'code-item-active' ,
               activeNumber >= 4 || "code-item-disabled"
             )}
             alt="code5"

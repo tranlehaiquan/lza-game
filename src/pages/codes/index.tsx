@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Container from "../../components/container";
 import Audio from "../../components/audio";
 import { STATUS } from "../../constants";
 import CodesEnter from "../../components/codesEnter";
 
-const MAP_DIME = {
-  width: 2500,
-  height: 898,
-};
 interface Props {
   className?: string;
 }
@@ -18,7 +13,6 @@ const Kv: React.FC<Props> = (props) => {
     (async () => {
       setStatus(STATUS.pending);
       setStatus(STATUS.resolved);
-      console.log(window.innerWidth - 100 / MAP_DIME.width);
     })();
   }, []);
 
@@ -37,7 +31,9 @@ const Kv: React.FC<Props> = (props) => {
         <img src="/codes-banner.png" alt="lzd" className="max-w-full" />
       </div>
 
-      <CodesEnter className="-mt-20" />
+      <div className="pl-24">
+        <CodesEnter className="-mt-28" />
+      </div>
 
       <Audio
         src="SOUND/KV chờ/videogameloop_29s_145bpm_LOOP.wav"

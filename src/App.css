@@ -18,7 +18,7 @@
 
 @screen lg {
   .app {
-    background-size: contain, cover;
+    background-size: 100% auto, cover;
     background-position: top center, bottom;
   }
 
@@ -101,7 +101,7 @@
   -ms-user-select: none;
 }
 
-.code-item:hover {
+.code-item-active {
   filter: drop-shadow(-2px 0px 2px var(--hover-color))
     drop-shadow(-2px 2px 2px var(--hover-color))
     drop-shadow(2px 2px 2px var(--hover-color))
@@ -115,5 +115,4 @@
 .code-item-disabled,
 .code-item-disabled:hover {
   cursor: inital;
-  filter: grayscale(1);
 }
