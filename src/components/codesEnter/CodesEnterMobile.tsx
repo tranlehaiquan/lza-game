@@ -20,8 +20,8 @@ interface Props {
 }
 
 const MAP_DIME = {
-  width: 2500,
-  height: 898,
+  width: 1081,
+  height: 852,
 };
 
 enum MESSAGE {
@@ -32,7 +32,7 @@ enum MESSAGE {
   "HOÀN TIỀN MAX",
 }
 
-const CodesEnter: React.FC<Props> = ({ className }) => {
+const CodesEnterMobile: React.FC<Props> = ({ className }) => {
   const dispatch = useDispatch();
   const setting = useSelector((state: RootState) => state.setting);
   const navigate = useNavigate();
@@ -99,7 +99,7 @@ const CodesEnter: React.FC<Props> = ({ className }) => {
     dispatch(reset());
     navigate("/");
   };
-
+  console.log(window.innerWidth, window.innerHeight);
   return (
     <div
       className={clsx("relative", className)}
@@ -111,11 +111,11 @@ const CodesEnter: React.FC<Props> = ({ className }) => {
       <div
         className=" absolute path-wrapper top-0"
         style={{
-          transform: `scale(${(window.innerWidth - 300) / MAP_DIME.width})`,
+          transform: `scale(${(window.innerWidth - 10) / MAP_DIME.width})`,
         }}
       >
         <img
-          src="/CON DUONG WEB.png"
+          src="/path-mobile.png"
           alt="path"
           className="max-w-none"
           width={MAP_DIME.width}
@@ -131,7 +131,7 @@ const CodesEnter: React.FC<Props> = ({ className }) => {
               activeNumber > 0 && "code-item-active"
             )}
             alt="code1"
-            style={{ width: 254, height: 301, bottom: 0, left: 120 }}
+            style={{ width: 150, height: 200, top: 0, left: 0 }}
             onClick={activeNumber === 0 ? handleClickCode : noop}
           />
           <img
@@ -143,7 +143,7 @@ const CodesEnter: React.FC<Props> = ({ className }) => {
               activeNumber > 1 && "code-item-active"
             )}
             alt="code2"
-            style={{ width: 260, height: 307, bottom: 150, left: 550 }}
+            style={{ width: 150, height: 177, top: 100, left: 240 }}
             onClick={activeNumber === 1 ? handleClickCode : noop}
           />
           <img
@@ -155,7 +155,7 @@ const CodesEnter: React.FC<Props> = ({ className }) => {
               activeNumber > 2 && "code-item-active"
             )}
             alt="code3"
-            style={{ width: 384, height: 305, bottom: 0, left: 870 }}
+            style={{ width: 190, height: 150, top: 300, left: 340 }}
             onClick={activeNumber === 2 ? handleClickCode : noop}
           />
           <img
@@ -167,7 +167,7 @@ const CodesEnter: React.FC<Props> = ({ className }) => {
               activeNumber > 3 && "code-item-active"
             )}
             alt="code4"
-            style={{ width: 264, height: 300, bottom: 480, left: 1163 }}
+            style={{ width: 150, height: 181, top: 240, left: 550 }}
             onClick={activeNumber === 3 ? handleClickCode : noop}
           />
           <img
@@ -179,7 +179,7 @@ const CodesEnter: React.FC<Props> = ({ className }) => {
               activeNumber > 4 && "code-item-active"
             )}
             alt="code5"
-            style={{ width: 260, height: 315, bottom: 180, left: 1622 }}
+            style={{ width: 150, height: 181, bottom: 180, left: 650 }}
             onClick={activeNumber === 4 ? handleClickCode : noop}
           />
           <img
@@ -188,7 +188,7 @@ const CodesEnter: React.FC<Props> = ({ className }) => {
               "absolute code-item"
             )}
             alt="code5"
-            style={{ width: 600, height: 600, bottom: 290, left: 2000 }}
+            style={{ width: 300, height: 300, top: 480, left: 800 }}
             onClick={activeNumber === 4 ? handleClickCode : noop}
           />
         </div>
@@ -279,4 +279,4 @@ const CodesEnter: React.FC<Props> = ({ className }) => {
   );
 };
 
-export default CodesEnter;
+export default CodesEnterMobile;

@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  --active-color: #fff;
   --hover-color: #ff9502;
   --toastify-toast-width: 350px;
 }
@@ -16,6 +17,14 @@
   background-position: top center, bottom;
 }
 
+.appSecond {
+  @apply min-h-screen bg-no-repeat;
+  background-image: url("../public/codes-bg.png"),
+    url("../public/bg-linear.png");
+  background-size: contain, cover;
+  background-position: 0px 70px, bottom;
+}
+
 @screen lg {
   .app {
     background-size: 100% auto, cover;
@@ -23,8 +32,6 @@
   }
 
   .appSecond {
-    background-image: url("../public/codes-bg.png"), url("../public/bg-linear.png");
-    background-size: contain, cover;
     background-position: top left, bottom;
   }
 }
@@ -101,11 +108,42 @@
   -ms-user-select: none;
 }
 
-.code-item-active {
+.code-item-current {
   filter: drop-shadow(-2px 0px 2px var(--hover-color))
     drop-shadow(-2px 2px 2px var(--hover-color))
     drop-shadow(2px 2px 2px var(--hover-color))
     drop-shadow(2px -2px 2px var(--hover-color));
+}
+
+.code-item-active {
+  filter: drop-shadow(-2px 0px 2px var(--active-color))
+    drop-shadow(-2px 2px 2px var(--active-color))
+    drop-shadow(2px 2px 2px var(--active-color))
+    drop-shadow(2px -2px 2px var(--active-color));
+  animation-name: dropshadow;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes dropshadow {
+  0% {
+    filter: drop-shadow(-2px 0px 2px var(--active-color))
+      drop-shadow(-2px 2px 2px var(--active-color))
+      drop-shadow(2px 2px 2px var(--active-color))
+      drop-shadow(2px -2px 2px var(--active-color));
+  }
+  50% {
+    filter: drop-shadow(-2px 0px 2px var(--active-color))
+      drop-shadow(-2px 2px 8px var(--active-color))
+      drop-shadow(2px 2px 8px var(--active-color))
+      drop-shadow(2px -2px 8px var(--active-color));
+  }
+  100% {
+    filter: drop-shadow(-2px 0px 2px var(--active-color))
+      drop-shadow(-2px 2px 2px var(--active-color))
+      drop-shadow(2px 2px 2px var(--active-color))
+      drop-shadow(2px -2px 2px var(--active-color));
+  }
 }
 
 .path-wrapper {

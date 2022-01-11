@@ -6,7 +6,7 @@ interface Props {
 
 const Loading: React.FC<Props> = (props) => {
   return (
-    <div className="fixed z-10 inset-0 overflow-y-auto">
+    <div className="fixed z-50 inset-0 overflow-y-auto">
       <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity">
         <div className="flex items-center justify-center min-h-screen text-center pt-2">
           <div className="relative">

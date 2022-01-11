@@ -32,8 +32,8 @@ const Kv: React.FC<Props> = (props) => {
   // const isInEvent = eventDate ? isPast(new Date().getTime() - 1) : false;
 
   const handleRegister = () => {
-    navigate('/register')
-  }
+    navigate("/register");
+  };
 
   return (
     <div className="app">
@@ -61,11 +61,19 @@ const Kv: React.FC<Props> = (props) => {
             endDate={eventDate ? eventDate.startTime : new Date().toString()}
           />
           <KvRules />
+
+          {isInEvent && (
+            <div className="text-center pr-5 mt-4">
+              <Button onClick={handleRegister} className=" md:text-2xl">
+                Đăng Ký
+              </Button>
+            </div>
+          )}
         </div>
       </Container>
 
       <div className="lg:block hidden w-full">
-        <img src="/check-points.png" className="mt-2" alt="points" />
+        <img src="/countdown.png" className="mt-2" alt="points" />
       </div>
 
       <img
@@ -73,14 +81,6 @@ const Kv: React.FC<Props> = (props) => {
         className="block lg:hidden mt-2"
         alt="points"
       />
-
-      {isInEvent && (
-        <div className="text-center pb-10 pr-5">
-          <Button onClick={handleRegister} className=" md:text-2xl">
-            Đăng Ký
-          </Button>
-        </div>
-      )}
 
       <Audio
         src="SOUND/KV chờ/videogameloop_29s_145bpm_LOOP.wav"

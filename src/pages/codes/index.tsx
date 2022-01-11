@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Audio from "../../components/audio";
 import { STATUS } from "../../constants";
-import CodesEnter from "../../components/codesEnter";
+import CodesEnter, { CodesEnterMobile } from "../../components/codesEnter";
 
 interface Props {
   className?: string;
@@ -19,7 +19,7 @@ const Kv: React.FC<Props> = (props) => {
   console.log(status);
 
   return (
-    <div className="app appSecond">
+    <div className="appSecond">
       <img
         src="/lzd-logo.png"
         alt="logo"
@@ -28,11 +28,15 @@ const Kv: React.FC<Props> = (props) => {
       />
 
       <div>
-        <img src="/codes-banner.png" alt="lzd" className="max-w-full" />
+        <img src="/codes-banner.png" alt="lzd" className="max-w-full pt-28" />
       </div>
 
-      <div className="pl-24">
-        <CodesEnter className="-mt-28" />
+      <div className="pl-24 hidden lg:block">
+        <CodesEnter className="-mt-40" />
+      </div>
+
+      <div className="block lg:hidden">
+        <CodesEnterMobile className="" />
       </div>
 
       <Audio
