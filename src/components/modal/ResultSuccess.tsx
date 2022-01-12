@@ -20,10 +20,17 @@ const RulesModal: React.FC<Props> = (props) => {
 
             <button
               onClick={props.onPlay}
-              className=" bg-NeonCarrot text-white p-2 rounded-full -translate-y-2/3"
+              className=" bg-NeonCarrot text-white p-2 rounded-full absolute top-0 right-0"
             >
               <XIcon className="h-12 w-12" />
             </button>
+
+            <a
+              href="https://university.lazada.vn/cms/nynm"
+              className="bg-NeonCarrot inline-block text-white p-3 -translate-y-10 rounded-lg font-bold shadow-md"
+            >
+              ĐỌC THÊM
+            </a>
           </div>
         </div>
       </div>

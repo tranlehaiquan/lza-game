@@ -9,6 +9,7 @@ import { EventDate } from "../../interface";
 import { isPast } from "date-fns";
 import Button from "../../components/button";
 import { useNavigate } from "react-router-dom";
+import ResultSuccess from "../../components/modal/ResultSuccess";
 
 interface Props {
   className?: string;
@@ -86,6 +87,8 @@ const Kv: React.FC<Props> = (props) => {
         src="SOUND/KV chờ/videogameloop_29s_145bpm_LOOP.wav"
         className="fixed bottom-5 right-5"
       />
+
+<ResultSuccess onPlay={console.log} />
     </div>
   );
 };

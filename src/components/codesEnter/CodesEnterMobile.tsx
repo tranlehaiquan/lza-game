@@ -46,7 +46,7 @@ const CodesEnterMobile: React.FC<Props> = ({ className }) => {
   useEffect(() => {
     if (!setting.isAuthenticated) {
       toast.info("Vui lòng đăng ký để tham gia!");
-      // navigate("/");
+      navigate("/");
     }
   }, []);
 
