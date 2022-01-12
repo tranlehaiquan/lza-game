@@ -242,7 +242,7 @@ const CodesEnter: React.FC<Props> = ({ className }) => {
                         name="storeName"
                         placeholder={"Nhập Mã Huy Hiệu"}
                         value={code}
-                        onChange={(e) => setCode(e.target.value)}
+                        onChange={(e) => setCode(e.target.value.toUpperCase())}
                         onBlur={console.log}
                       />
                     </p>

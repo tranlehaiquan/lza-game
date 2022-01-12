@@ -43,13 +43,6 @@ const CodesEnterMobile: React.FC<Props> = ({ className }) => {
   const [codes, setCodes] = useState<string[]>([]);
   const [showModal, setShowModal] = useState<"success" | "fail" | "">("");
 
-  useEffect(() => {
-    if (!setting.isAuthenticated) {
-      toast.info("Vui lòng đăng ký để tham gia!");
-      navigate("/");
-    }
-  }, []);
-
   const handleClickCode = () => {
     const audio = new Audio("/SOUND/tieéng click/click.wav");
     audio.play();

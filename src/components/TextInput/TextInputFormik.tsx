@@ -8,16 +8,20 @@ type Props = {
   label?: string;
   placeholder?: string;
   required?: boolean;
+  uppercase?: boolean
 };
 
-const TextInputFormik: React.FC<Props> = ({ name, ...rest }) => {
+const TextInputFormik: React.FC<Props> = ({ name, uppercase, ...rest }) => {
   const [field, meta] = useField(name);
   return (
     <TextInput
       name={name}
       {...rest}
       value={field.value}
-      onChange={field.onChange}
+      onChange={(e) => {
+        if(uppercase) e.target.value = e.target.value.toUpperCase()
+        field.onChange(e)
+      }}
       onBlur={field.onBlur}
       isError={!!(meta.touched && meta.error)}
       message={!!(meta.touched && meta.error) ? meta.error : ''}

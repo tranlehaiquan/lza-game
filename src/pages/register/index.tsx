@@ -111,6 +111,7 @@ const Kv: React.FC<Props> = (props) => {
                       name="storeCode"
                       placeholder={"Mã gian hàng"}
                       required
+                      uppercase
                     />
                   </label>
                   <label className="block mb-6">

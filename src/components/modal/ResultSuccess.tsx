@@ -27,9 +27,9 @@ const RulesModal: React.FC<Props> = (props) => {
 
             <a
               href="https://university.lazada.vn/cms/nynm"
-              className="bg-NeonCarrot inline-block text-white p-3 -translate-y-10 rounded-lg font-bold shadow-md"
+              className="bg-NeonCarrot inline-block text-white p-3 -translate-y-10 rounded-lg font-bold shadow-md uppercase"
             >
-              ĐỌC THÊM
+              Xem Chi Tiết
             </a>
           </div>
         </div>
