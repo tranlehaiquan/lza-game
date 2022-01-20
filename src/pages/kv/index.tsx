@@ -73,11 +73,11 @@ const Kv: React.FC<Props> = (props) => {
       </Container>
 
       <div className="lg:block hidden w-full">
-        <img src="/countdown.png" className="mt-2" alt="points" />
+        <img src="/Countdown-OK (1).gif" className="mt-2" alt="points" />
       </div>
 
       <img
-        src="/points-mobile.png"
+        src="/Countdown-mobile-OK.gif"
         className="block lg:hidden mt-2"
         alt="points"
       />
