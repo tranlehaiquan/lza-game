@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Container from "../../components/container";
 import Countdown from "../../components/countdown";
 import KvRules from "../../components/kvRules";
@@ -6,7 +6,7 @@ import Audio from "../../components/audio";
 import { getEventConfig } from "../../services/getConfig";
 import { STATUS } from "../../constants";
 import { EventDate } from "../../interface";
-import { isPast } from "date-fns";
+import { isPast, isFuture } from "date-fns";
 import Button from "../../components/button";
 import { useNavigate } from "react-router-dom";
 
@@ -16,6 +16,9 @@ interface Props {
 const Kv: React.FC<Props> = (props) => {
   const [status, setStatus] = useState(STATUS.idle);
   const [eventDate, setEventDate] = useState<EventDate>();
+  const [isInEvent, setIsInEvent] = useState(false);
+  const timeOut = useRef<number>();
+
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -23,14 +26,26 @@ const Kv: React.FC<Props> = (props) => {
       setStatus(STATUS.pending);
       const data = await getEventConfig();
       setEventDate(data.data);
+      const IsInEventTime =
+        isPast(new Date(data.data.startTime).getTime()) &&
+        isFuture(new Date(data.data.endTime).getTime());
+
+      setIsInEvent(IsInEventTime);
+
+      if (!IsInEventTime) {
+        timeOut.current = window.setTimeout(() => {
+          setIsInEvent(true);
+        }, new Date(data.data.startTime).getTime() - Date.now());
+      }
       setStatus(STATUS.resolved);
     })();
+    return () => {
+      timeOut.current && clearTimeout(timeOut.current);
+    };
   }, []);
-  console.log(status);
 
-  const isInEvent = eventDate ? isPast(new Date(eventDate.startTime).getTime()) : false;
+  // const isInEvent = eventDate ? isPast(new Date(eventDate.startTime).getTime()) : false;
   // const isInEvent = eventDate ? isPast(new Date().getTime() - 1) : false;
-
   const handleRegister = () => {
     navigate("/register");
   };
